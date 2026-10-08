@@ -147,3 +147,9 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+
+
+test.js
+test-agent.js
+test-errors.js

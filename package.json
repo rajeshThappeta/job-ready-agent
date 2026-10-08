@@ -1,0 +1,30 @@
+{
+  "name": "job-ready-agent",
+  "version": "1.0.0",
+  "description": "An agent that reads your real work and a real job post  Abstract",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rajeshThappeta/job-ready-agent.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/rajeshThappeta/job-ready-agent/issues"
+  },
+  "homepage": "https://github.com/rajeshThappeta/job-ready-agent#readme",
+  "dependencies": {
+    "@langchain/core": "^1.2.14",
+    "@langchain/langgraph": "^1.4.21",
+    "@langchain/ollama": "^1.3.0",
+    "dotenv": "^18.0.5",
+    "express": "^5.2.1",
+    "langchain": "^1.5.15",
+    "zod": "^4.6.5"
+  }
+}
