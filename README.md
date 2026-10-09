@@ -75,7 +75,7 @@ Asking the student a question is not a tool. When something is missing or unread
 | A tool error is returned to the model, which recovers (for example, "please paste the job description") | The tool files in `tools/` |
 | Conversation memory per session, so follow-up answers continue the same run | `MemorySaver` with `thread_id` |
 | Human approval enforced in code, not only in the prompt | `humanInTheLoopMiddleware` |
-| Clear separation: route handles HTTP, service handles the agent, tools handle the outside world | `routes/`, `services/`, `tools/` |
+| Clear separation: route handles HTTP, service handles the agent, tools handle the outside world | `api/`, `services/`, `tools/` |
 
 ---
 
@@ -174,7 +174,7 @@ A response can take a minute or two, because the model reads several READMEs.
 ```
 job-ready-agent/
 ├── server.js                      # Express app setup
-├── routes/chat.router.js          # POST /api/chat: validation and HTTP only
+├── api/chat.router.js             # POST /api/chat: validation and HTTP only
 ├── services/agent.service.js      # model, prompt, agent, sessions, approval flow
 └── tools/
     ├── get-github-profile.tool.js
