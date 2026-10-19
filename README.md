@@ -196,11 +196,24 @@ Node.js · Express 5 · LangChain (`createAgent`) · LangGraph (checkpointer and
 - **Only the first 15 repos are listed** (own work first, then forks, newest first). An older relevant project can be missed.
 - **Local models vary.** Results can differ between runs. In testing, a smaller model (`qwen3:8b`) sometimes wrote tool calls as plain text instead of making them; `qwen3:14b` was more reliable. Always check an important verdict yourself.
 - **Sessions live in memory.** Restarting the server clears every conversation. A persistent checkpointer (for example a MongoDB one) would fix this.
-- **No step limit yet.** A misbehaving model could loop for a long time.
+- **No step limit yet.** A misbehaving model, or a bad tool result it keeps retrying, could loop for a long time.
+- **No step log yet.** When a verdict is wrong, there is no record showing whether the model chose the wrong tool or called the right tool and misread its result.
 - **This is a learning tool, not a hiring prediction.** It does not know what a recruiter will decide.
+
+## Testing the agent loop (planned)
+
+Grading only the final reply hides where an agent went wrong. The next version will test the loop itself:
+
+1. **Step log.** Record every step with the tool name, the arguments, the result and the model's next decision.
+2. **Schema check first.** Validate each tool name and its arguments against the tool's Zod schema before grading the final reply.
+3. **Step cap.** Stop after a fixed number of steps and return a partial answer, so one bad tool result cannot keep the model looping.
+
+With the step log, a wrong answer can be traced to one of two causes: the wrong tool was called, or the right tool was called and its result was misread.
 
 ## Roadmap
 
+- Step log for every tool call (tool, arguments, result, next decision)
+- Schema validation of tool calls before grading the final reply
 - Step limit with a partial answer when it is reached
 - Trace of the tool calls in the response, so a UI can show the agent's decisions
 - Persistent sessions
