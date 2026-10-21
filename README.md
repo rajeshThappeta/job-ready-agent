@@ -75,6 +75,9 @@ Asking the student a question is not a tool. When something is missing or unread
 | A tool error is returned to the model, which recovers (for example, "please paste the job description") | The tool files in `tools/` |
 | Conversation memory per session, so follow-up answers continue the same run | `MemorySaver` with `thread_id` |
 | Human approval enforced in code, not only in the prompt | `humanInTheLoopMiddleware` |
+| README and job-page text is treated as data, never as instructions | The data rule in `SYSTEM_PROMPT` in `services/agent.service.js` |
+| Tool output is truncated before it reaches the model | `MAX_CONTENT_CHARS` in `tools/read-repo-readme.tool.js` |
+| Every tool has a Zod schema and a clear description, its contract with the model | The `schema` and `description` in each file in `tools/` |
 | Clear separation: route handles HTTP, service handles the agent, tools handle the outside world | `api/`, `services/`, `tools/` |
 
 ---
